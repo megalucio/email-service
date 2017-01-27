@@ -20,11 +20,12 @@ public class MailController {
 
 	@RequestMapping(value = "/mail", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
-	public void listBranches(@RequestParam(value = "emailAddress", required = true) final String emailAddress,
+	public void listBranches(
+			@RequestParam(value = "address", required = true) final String address,
 			@RequestParam(value = "subject", required = true) final String subject,
-			@RequestParam(value = "text", required = true) final String text) {
+			@RequestParam(value = "message", required = true) final String message) {
 		logger.info("Sending email");
-		mailService.sendMail(emailAddress, subject, text);
+		mailService.sendMail(address, subject, message);
 		logger.info("Email sent");
 	}
 
