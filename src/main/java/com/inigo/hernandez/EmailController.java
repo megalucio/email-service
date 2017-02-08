@@ -11,21 +11,21 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class MailController {
+public class EmailController {
 
 	@Autowired
-	private MailService mailService;
+	private EmailService emailService;
 
 	protected final Log logger = LogFactory.getLog(getClass());
 
-	@RequestMapping(value = "/mail", method = RequestMethod.POST)
+	@RequestMapping(value = "/email", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
 	public void listBranches(
 			@RequestParam(value = "address", required = true) final String address,
 			@RequestParam(value = "subject", required = true) final String subject,
 			@RequestParam(value = "message", required = true) final String message) {
 		logger.info("Sending email");
-		mailService.sendMail(address, subject, message);
+		emailService.sendMail(address, subject, message);
 		logger.info("Email sent");
 	}
 

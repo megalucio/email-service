@@ -15,7 +15,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MailService {
+public class EmailService {
 
 	private static final String EMAIL = "smtp.ssl.email";
 	private static final String PASSWORD = "smpt.ssl.password";
