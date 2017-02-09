@@ -25,7 +25,7 @@ public class EmailService {
 	@Autowired
 	Environment env;
 
-	public void sendMail(String address, String subject, String message) {
+	public void emailMe(String subject, String message) {
 
 		Properties props = new Properties();
 		props.put("mail.smtp.host", env.getProperty(HOST));
@@ -45,7 +45,7 @@ public class EmailService {
 			Message mail = new MimeMessage(session);
 			mail.setFrom(new InternetAddress(env.getProperty(EMAIL)));
 
-			mail.setRecipients(Message.RecipientType.TO, InternetAddress.parse(address));
+			mail.setRecipients(Message.RecipientType.TO, InternetAddress.parse(env.getProperty(EMAIL)));
 			mail.setSubject(subject);
 			mail.setText(message);
 
