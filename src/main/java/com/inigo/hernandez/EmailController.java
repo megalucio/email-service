@@ -17,6 +17,12 @@ public class EmailController {
 	private EmailService emailService;
 
 	protected final Log logger = LogFactory.getLog(getClass());
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@ResponseStatus(value = HttpStatus.OK)
+	public String ping() {
+		return "email-service";
+	}
 
 	@RequestMapping(value = "/emailMe", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
